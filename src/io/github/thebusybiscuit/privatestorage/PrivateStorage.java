@@ -8,9 +8,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.thebusybiscuit.privatestorage.storage.PrivateChests;
 import io.github.thebusybiscuit.privatestorage.storage.PublicChests;
+import me.mrCookieSlime.CSCoreLibPlugin.CSCoreLib;
 import me.mrCookieSlime.CSCoreLibPlugin.PluginUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.Item.CustomItem;
 import me.mrCookieSlime.CSCoreLibPlugin.general.World.CustomSkull;
+import me.mrCookieSlime.CSCoreLibPlugin.protection.ProtectionManager;
 import me.mrCookieSlime.CSCoreLibSetup.CSCoreLibLoader;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunBlockHandler;
@@ -85,7 +87,7 @@ public class PrivateStorage extends JavaPlugin {
 					case PRIVATE:
 						return BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
 					default:
-						return true;
+						return CSCoreLib.getLib().getProtectionManager().canAccessChest(p.getUniqueId(), b, true);
 				}
 			}
 
