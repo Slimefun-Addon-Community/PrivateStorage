@@ -56,7 +56,7 @@ public class PublicChests {
 		.register();
 		PrivateStorage.applyChestTraits("SPRUCE_CHEST", 18, "&bSpruce Chest", true, ChestProtectionLevel.PUBLIC);
 
-		new SlimefunItem(category, chest_oak, "JUNGLE_CHEST", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, chest_jungle, "JUNGLE_CHEST", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.CHEST), new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.IRON_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("JUNGLE_CHEST", 18, "&bJungle Chest", true, ChestProtectionLevel.PUBLIC);
