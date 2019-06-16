@@ -46,27 +46,27 @@ public class PrivateChests {
 		.register();
 		PrivateStorage.applyChestTraits("PRIVATE_SAFE_OAK", 18, "&bOak Safe", true,  ChestProtectionLevel.PRIVATE);
 
-		new SlimefunItem(category, safe_oak, "PRIVATE_SAFE_BIRCH", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, safe_birch, "PRIVATE_SAFE_BIRCH", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.BIRCH_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.BIRCH_LOG), SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.BIRCH_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.BIRCH_LOG), new ItemStack(Material.GOLD_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("PRIVATE_SAFE_BIRCH", 18, "&bBirch Safe", true,  ChestProtectionLevel.PRIVATE);
 
-		new SlimefunItem(category, safe_oak, "PRIVATE_SAFE_SPRUCE", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, safe_spruce, "PRIVATE_SAFE_SPRUCE", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.SPRUCE_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.SPRUCE_LOG), SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.SPRUCE_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.SPRUCE_LOG), new ItemStack(Material.GOLD_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("PRIVATE_SAFE_SPRUCE", 18, "&bSpruce Safe", true,  ChestProtectionLevel.PRIVATE);
 
-		new SlimefunItem(category, safe_oak, "PRIVATE_SAFE_JUNGLE", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, safe_jungle, "PRIVATE_SAFE_JUNGLE", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.JUNGLE_LOG), SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.JUNGLE_LOG), new ItemStack(Material.GOLD_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("PRIVATE_SAFE_JUNGLE", 18, "&bJungle Safe", true,  ChestProtectionLevel.PRIVATE);
 
-		new SlimefunItem(category, safe_oak, "PRIVATE_SAFE_ACACIA", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, safe_acacia, "PRIVATE_SAFE_ACACIA", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.ACACIA_LOG), SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.GOLD_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("PRIVATE_SAFE_OAK", 18, "&bAcacia Safe", true,  ChestProtectionLevel.PRIVATE);
 
-		new SlimefunItem(category, safe_oak, "PRIVATE_SAFE_DARK_OAK", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, safe_dark_oak, "PRIVATE_SAFE_DARK_OAK", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.DARK_OAK_LOG), SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.GOLD_NUGGET), new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.GOLD_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("PRIVATE_SAFE_DARK_OAK", 18, "&bDark Oak Safe", true,  ChestProtectionLevel.PRIVATE);

@@ -61,12 +61,12 @@ public class PublicChests {
 		.register();
 		PrivateStorage.applyChestTraits("JUNGLE_CHEST", 18, "&bJungle Chest", true, ChestProtectionLevel.PUBLIC);
 
-		new SlimefunItem(category, chest_oak, "ACACIA_CHEST", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, chest_acacia, "ACACIA_CHEST", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.CHEST), new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.ACACIA_LOG), new ItemStack(Material.IRON_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("ACACIA_CHEST", 18, "&bAcacia Chest", true, ChestProtectionLevel.PUBLIC);
 
-		new SlimefunItem(category, chest_oak, "DARK_OAK_CHEST", RecipeType.ENHANCED_CRAFTING_TABLE,
+		new SlimefunItem(category, chest_dark_oak, "DARK_OAK_CHEST", RecipeType.ENHANCED_CRAFTING_TABLE,
 		new ItemStack[] {new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.CHEST), new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.IRON_NUGGET), new ItemStack(Material.DARK_OAK_LOG), new ItemStack(Material.IRON_NUGGET)})
 		.register();
 		PrivateStorage.applyChestTraits("DARK_OAK_CHEST", 18, "&bDark Oak Chest", true, ChestProtectionLevel.PUBLIC);
