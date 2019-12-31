@@ -5,48 +5,37 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.mrCookieSlime.CSCoreLibPlugin.CSCoreLib;
+import me.mrCookieSlime.Slimefun.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunBlockHandler;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.UnregisterReason;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
+import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 
 public class SlimefunChest extends SlimefunItem {
 
-	public SlimefunChest(ChestProtectionLevel level, int size, boolean canExplode, Category category, ItemStack item, String id, RecipeType recipeType, ItemStack[] recipe) {
-		super(category, item, id, recipeType, recipe);
+	public SlimefunChest(ChestProtectionLevel level, int size, boolean canExplode, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+		super(category, item, recipeType, recipe);
 		
-		new BlockMenuPreset(id, item.getItemMeta().getDisplayName()) {
-			
-			@Override
-			public void newInstance(BlockMenu arg0, Block arg1) {
-				// No need to do anything here
-			}
+		new BlockMenuPreset(getID(), item.getItemMeta().getDisplayName()) {
 			
 			@Override
 			public void init() {
 				setSize(size);
 				
-				addMenuOpeningHandler(new MenuOpeningHandler() {
-					
-					@Override
-					public void onOpen(Player p) {
-						p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 1.8F, 1.6F);
-					}
-				});
+				addMenuOpeningHandler(p ->
+					p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 1.8F, 1.6F)
+				);
 				
-				addMenuCloseHandler(new MenuCloseHandler() {
-					
-					@Override
-					public void onClose(Player p) {
-						p.playSound(p.getLocation(), Sound.BLOCK_CHEST_CLOSE, 1.8F, 1.6F);
-					}
-				});
+				addMenuCloseHandler(p ->
+					p.playSound(p.getLocation(), Sound.BLOCK_CHEST_CLOSE, 1.8F, 1.6F)
+				);
 			}
 			
 			@Override
@@ -57,7 +46,7 @@ public class SlimefunChest extends SlimefunItem {
 					case PRIVATE:
 						return BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
 					default:
-						return CSCoreLib.getLib().getProtectionManager().canAccessChest(p.getUniqueId(), b, true);
+						return SlimefunPlugin.getProtectionManager().hasPermission(p, b, ProtectableAction.ACCESS_INVENTORIES);
 				}
 			}
 
@@ -75,7 +64,7 @@ public class SlimefunChest extends SlimefunItem {
 			}
 		};
 		
-		SlimefunItem.registerBlockHandler(id, new SlimefunBlockHandler() {
+		SlimefunItem.registerBlockHandler(getID(), new SlimefunBlockHandler() {
 			
 			@Override
 			public void onPlace(Player p, Block b, SlimefunItem item) {
@@ -85,6 +74,7 @@ public class SlimefunChest extends SlimefunItem {
 			@Override
 			public boolean onBreak(Player p, Block b, SlimefunItem item, UnregisterReason reason) {
 				boolean allow = true;
+				
 				if (reason.equals(UnregisterReason.PLAYER_BREAK)) {
 					if (!p.hasPermission("PrivateStorage.bypass")) { 
 						allow = BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
@@ -95,8 +85,12 @@ public class SlimefunChest extends SlimefunItem {
 				}
 				
 				if (allow) {
+					BlockMenu inv = BlockStorage.getInventory(b);
+					
 					for (int slot = 0; slot < size; slot++) {
-						if (BlockStorage.getInventory(b).getItemInSlot(slot) != null) b.getWorld().dropItemNaturally(b.getLocation(), BlockStorage.getInventory(b).getItemInSlot(slot));
+						if (inv.getItemInSlot(slot) != null) {
+							b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
+						}
 					}
 				}
 				
