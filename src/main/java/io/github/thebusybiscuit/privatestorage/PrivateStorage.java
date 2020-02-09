@@ -1,5 +1,6 @@
 package io.github.thebusybiscuit.privatestorage;
 
+import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.thebusybiscuit.privatestorage.storage.PrivateChests;
@@ -19,7 +20,7 @@ public class PrivateStorage extends JavaPlugin {
 		Config cfg = new Config(this);
 
 		// Setting up bStats
-		new Metrics(this);
+		new Metrics(this, 4912);
 
 		if (getDescription().getVersion().startsWith("DEV - ")) {
 			Updater updater = new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/PrivateStorage/master");
@@ -28,7 +29,7 @@ public class PrivateStorage extends JavaPlugin {
 			if (cfg.getBoolean("options.auto-update")) updater.start();
 		}
 		
-		Category category = new Category(new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZThlNTU0NGFmN2Y1NDg5Y2MyNzQ5MWNhNjhmYTkyMzg0YjhlYTVjZjIwYjVjODE5OGFkYjdiZmQxMmJjMmJjMiJ9fX0="), "&7Private Storage - Chests and Safes", "", "&a> Click to open"));
+		Category category = new Category(new NamespacedKey(this, "private_storage"), new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZThlNTU0NGFmN2Y1NDg5Y2MyNzQ5MWNhNjhmYTkyMzg0YjhlYTVjZjIwYjVjODE5OGFkYjdiZmQxMmJjMmJjMiJ9fX0="), "&7Private Storage - Chests and Safes", "", "&a> Click to open"));
 		
 		new PublicChests(category);
 		new PrivateChests(category);
