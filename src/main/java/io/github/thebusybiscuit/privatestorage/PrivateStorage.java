@@ -31,7 +31,7 @@ public class PrivateStorage extends JavaPlugin {
 		
 		Category category = new Category(new NamespacedKey(this, "private_storage"), new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZThlNTU0NGFmN2Y1NDg5Y2MyNzQ5MWNhNjhmYTkyMzg0YjhlYTVjZjIwYjVjODE5OGFkYjdiZmQxMmJjMmJjMiJ9fX0="), "&7Private Storage - Chests and Safes", "", "&a> Click to open"));
 		
-		new PublicChests(category);
-		new PrivateChests(category);
+		new PublicChests(category).registerResearches(this);
+		new PrivateChests(category).registerResearches(this);
 	}
 }

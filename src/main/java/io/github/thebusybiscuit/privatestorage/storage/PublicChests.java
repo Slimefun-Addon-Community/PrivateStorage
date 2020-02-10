@@ -1,14 +1,15 @@
 package io.github.thebusybiscuit.privatestorage.storage;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.privatestorage.ChestProtectionLevel;
+import io.github.thebusybiscuit.privatestorage.PrivateStorage;
 import io.github.thebusybiscuit.privatestorage.SlimefunChest;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
@@ -46,7 +47,6 @@ public class PublicChests {
 		chestSteel = new SlimefunItemStack("STEEL_CHEST", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjljYjNkMTlkYjUyOWEyMTVjZjYyNjk3NTkxY2MxM2ZiOGM3ODZhOGYyN2I3NTI4YzMyYWMyOTg2Yjk2NzBjNCJ9fX0=", "&6Steel chest", getLore(5, true));
 		
 		registerItems(category);
-		registerResearches();
 	}
 	
 	private String[] getLore(int size, boolean explosions) {
@@ -119,10 +119,10 @@ public class PublicChests {
 		.register();
 	}
 
-	public void registerResearches() {
-		Slimefun.registerResearch(new Research(606, "Top Tier Storage", 20), chestOak, chestBirch, chestSpruce, chestJungle, chestAcacia, chestDarkOak);
-		Slimefun.registerResearch(new Research(608, "Improved Storage", 16), chestIron, chestGold, chestDiamond, chestEmerald);
-		Slimefun.registerResearch(new Research(607, "Hardened Storage", 24), chestObsidian, chestSteel);
+	public void registerResearches(PrivateStorage plugin) {
+		Slimefun.registerResearch(new NamespacedKey(plugin, "wooden_chests"), 606, "Top Tier Storage", 20, chestOak, chestBirch, chestSpruce, chestJungle, chestAcacia, chestDarkOak);
+		Slimefun.registerResearch(new NamespacedKey(plugin, "metal_chests"), 608, "Improved Storage", 16, chestIron, chestGold, chestDiamond, chestEmerald);
+		Slimefun.registerResearch(new NamespacedKey(plugin, "hardened_chests"), 607, "Hardened Storage", 24, chestObsidian, chestSteel);
 	}
 
 }

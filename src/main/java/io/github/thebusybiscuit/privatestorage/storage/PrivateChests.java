@@ -1,14 +1,15 @@
 package io.github.thebusybiscuit.privatestorage.storage;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.privatestorage.ChestProtectionLevel;
+import io.github.thebusybiscuit.privatestorage.PrivateStorage;
 import io.github.thebusybiscuit.privatestorage.SlimefunChest;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
@@ -46,7 +47,6 @@ public class PrivateChests {
 		safeSteel = new SlimefunItemStack("PRIVATE_SAFE_STEEL", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjljYjNkMTlkYjUyOWEyMTVjZjYyNjk3NTkxY2MxM2ZiOGM3ODZhOGYyN2I3NTI4YzMyYWMyOTg2Yjk2NzBjNCJ9fX0=", "&6Steel Safe", getLore(5, true));
 		
 		registerItems(category);
-		registerResearches();
 	}
 	
 	private String[] getLore(int size, boolean explosions) {
@@ -117,11 +117,11 @@ public class PrivateChests {
 		.register();
 	}
 	
-	public void registerResearches() {
-		Slimefun.registerResearch(new Research(609, "Magical Storage", 8), safeOak, safeBirch, safeSpruce, safeJungle, safeAcacia, safeDarkOak);
-		Slimefun.registerResearch(new Research(610, "Upgraded Storage", 16), safeIron, safeGold, safeDiamond);
-		Slimefun.registerResearch(new Research(611, "Top Tier Storage", 20), safeEmerald);
-		Slimefun.registerResearch(new Research(612, "Hardened Storage", 24), safeObsidian, safeSteel);
+	public void registerResearches(PrivateStorage plugin) {
+		Slimefun.registerResearch(new NamespacedKey(plugin, "wooden_safes"), 609, "Magical Storage", 8, safeOak, safeBirch, safeSpruce, safeJungle, safeAcacia, safeDarkOak);
+		Slimefun.registerResearch(new NamespacedKey(plugin, "metal_safes"), 610, "Upgraded Storage", 16, safeIron, safeGold, safeDiamond);
+		Slimefun.registerResearch(new NamespacedKey(plugin, "gem_safes"), 611, "Top Tier Storage", 20, safeEmerald);
+		Slimefun.registerResearch(new NamespacedKey(plugin, "hardened_safes"), 612, "Hardened Storage", 24, safeObsidian, safeSteel);
 	}
 
 }
