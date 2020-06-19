@@ -7,10 +7,10 @@ import org.bukkit.inventory.ItemStack;
 import io.github.thebusybiscuit.privatestorage.ChestProtectionLevel;
 import io.github.thebusybiscuit.privatestorage.PrivateStorage;
 import io.github.thebusybiscuit.privatestorage.SlimefunChest;
+import io.github.thebusybiscuit.slimefun4.core.researching.Research;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class PrivateChests {
@@ -119,10 +119,10 @@ public class PrivateChests {
 	}
 	
 	public void registerResearches(PrivateStorage plugin) {
-		Slimefun.registerResearch(new NamespacedKey(plugin, "wooden_safes"), 609, "Magical Storage", 8, safeOak, safeBirch, safeSpruce, safeJungle, safeAcacia, safeDarkOak);
-		Slimefun.registerResearch(new NamespacedKey(plugin, "metal_safes"), 610, "Upgraded Storage", 16, safeIron, safeGold, safeDiamond);
-		Slimefun.registerResearch(new NamespacedKey(plugin, "gem_safes"), 611, "Top Tier Storage", 20, safeEmerald);
-		Slimefun.registerResearch(new NamespacedKey(plugin, "hardened_safes"), 612, "Hardened Storage", 24, safeObsidian, safeSteel);
+		new Research(new NamespacedKey(plugin, "wooden_safes"), 609, "Magical Storage", 8).addItems(safeOak, safeBirch, safeSpruce, safeJungle, safeAcacia, safeDarkOak).register();
+		new Research(new NamespacedKey(plugin, "metal_safes"), 610, "Upgraded Storage", 16).addItems(safeIron, safeGold, safeDiamond).register();
+		new Research(new NamespacedKey(plugin, "gem_safes"), 611, "Top Tier Storage", 20).addItems(safeEmerald).register();
+		new Research(new NamespacedKey(plugin, "hardened_safes"), 612, "Hardened Storage", 24).addItems(safeObsidian, safeSteel).register();
 	}
 
 }
