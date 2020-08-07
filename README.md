@@ -1,17 +1,15 @@
-# PrivateStorage
-PrivateStorage is a [Slimefun4](https://github.com/TheBusyBiscuit/Slimefun4/) Addon.<br>
-You need to install Slimefun4 in order for this plugin to work.
+# 私人倉庫
+黏液科技的附加 繁體翻譯版
 
-PrivateStorage is a Slimefun4 Addon that adds new Chests.
-There are two types of chests: private and public ones.
-Private Chests can only be opened and broken by the Player who placed them, while public ones adhere to your protection plugins.<br>
-This Addon also adds chests for the different wood types, an iron chest, a diamond chest, explosion-resistant chests and much more!
+私人儲物是黏液科技的附加插件,新增了新的箱子.<br>
+兩種不同類型的箱子: 私人與公開.<br>
+私人箱子只能由放置它們的玩家打開和破壞,而公開箱子可以使用您的保護插件.
 
-[Read more...](https://github.com/TheBusyBiscuit/Slimefun4/wiki/PrivateStorage)
+[官方原碼連結](https://github.com/TheBusyBiscuit/PrivateStorage)
 
-## Download PrivateStorage
-You can download PrivateStorage right here: [Development Builds](https://thebusybiscuit.github.io/builds/TheBusyBiscuit/PrivateStorage/master/)
-
+## 下載私人倉庫
+下載繁體翻譯版: [點此](https://github.com/xMikux/PrivateStorage/releases)<br>
+你也可以在這裡下載官方的開發版: [開發版構建](https://thebusybiscuit.github.io/builds/TheBusyBiscuit/PrivateStorage/master/)
 <p align="center">
   <a href="https://thebusybiscuit.github.io/builds/TheBusyBiscuit/PrivateStorage/master/">
     <img src="https://thebusybiscuit.github.io/builds/TheBusyBiscuit/PrivateStorage/master/badge.svg" alt="Build Server"/>
@@ -19,8 +17,8 @@ You can download PrivateStorage right here: [Development Builds](https://thebusy
 </p>
 
 ## Discord
-You can find Slimefun's community on Discord!
-Click the badge down below to join the server for suggestions/questions or other discussions about this plugin.
+您可以在Discord上找到官方SlimeFun社區!
+點擊下面的徵標來加入伺服器.
 <p align="center">
   <a href="https://discord.gg/fsD4Bkh">
     <img src="https://img.shields.io/discord/565557184348422174?color=7289DA&label=Discord&style=for-the-badge" alt="Discord Invite"/>
