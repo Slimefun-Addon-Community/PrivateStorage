@@ -39,7 +39,7 @@ public class PrivateChests {
 		safeDarkOak = new SlimefunItemStack("PRIVATE_SAFE_DARK_OAK", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmMzOGM5YjJmZDExYzliMDIwODEzYTg3MTBhNjdmYmVhYzU2YjYxZTkyMzVmNWQ3ZDg5ZWQ5YjdhMTU5ZDQ0NSJ9fX0=", "&6黑橡木保險箱", getLore(2, false));
 		
 		safeIron = new SlimefunItemStack("PRIVATE_SAFE_IRON", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZThlNTU0NGFmN2Y1NDg5Y2MyNzQ5MWNhNjhmYTkyMzg0YjhlYTVjZjIwYjVjODE5OGFkYjdiZmQxMmJjMmJjMiJ9fX0=", "&6鐵保險箱", getLore(3, false));
-		safeGold = new SlimefunItemStack("PRIVATE_SAFE_GOLD", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyY2VlZDA2NDgzNWVhMjMyZTY1NmE3M2Y4MmVkNzYxODI3ODU5YzkxMzQ0OTMxNGI4ZmQyMWIzZDExZDYifX19", "&6G金保險箱", getLore(4, false));
+		safeGold = new SlimefunItemStack("PRIVATE_SAFE_GOLD", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyY2VlZDA2NDgzNWVhMjMyZTY1NmE3M2Y4MmVkNzYxODI3ODU5YzkxMzQ0OTMxNGI4ZmQyMWIzZDExZDYifX19", "&6金保險箱", getLore(4, false));
 		safeDiamond = new SlimefunItemStack("PRIVATE_SAFE_DIAMOND", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2FkYmNmYjI4ODIxNWE4ZDE1M2RkZmRkYjM2YmQyZWQ3YTM3YWRkMzU2NjJmODYzM2Y3MTFkMmRmY2ViNDE3YyJ9fX0=", "&6鑽石保險箱", getLore(5, false));
 		safeEmerald = new SlimefunItemStack("PRIVATE_SAFE_EMERALD", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmFkMzVlYmRiMTI1ZmJhNDIxMjk4ZDQyYzIwMmM3N2M3NWI0MmNjOTljOTQ5MzlmNjM3NjQwYWMxODFmIn19fQ==", "&6綠寶石保險箱", getLore(6, false));
 		
@@ -119,10 +119,10 @@ public class PrivateChests {
 	}
 	
 	public void registerResearches(PrivateStorage plugin) {
-		new Research(new NamespacedKey(plugin, "wooden_safes"), 609, "Magical Storage", 8).addItems(safeOak, safeBirch, safeSpruce, safeJungle, safeAcacia, safeDarkOak).register();
-		new Research(new NamespacedKey(plugin, "metal_safes"), 610, "Upgraded Storage", 16).addItems(safeIron, safeGold, safeDiamond).register();
-		new Research(new NamespacedKey(plugin, "gem_safes"), 611, "Top Tier Storage", 20).addItems(safeEmerald).register();
-		new Research(new NamespacedKey(plugin, "hardened_safes"), 612, "Hardened Storage", 24).addItems(safeObsidian, safeSteel).register();
+		new Research(new NamespacedKey(plugin, "wooden_safes"), 609, "魔法儲存", 8).addItems(safeOak, safeBirch, safeSpruce, safeJungle, safeAcacia, safeDarkOak).register();
+		new Research(new NamespacedKey(plugin, "metal_safes"), 610, "更好的魔法儲存", 16).addItems(safeIron, safeGold, safeDiamond).register();
+		new Research(new NamespacedKey(plugin, "gem_safes"), 611, "頂級魔法儲存", 20).addItems(safeEmerald).register();
+		new Research(new NamespacedKey(plugin, "hardened_safes"), 612, "魔法硬化儲存", 24).addItems(safeObsidian, safeSteel).register();
 	}
 
 }

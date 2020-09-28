@@ -119,9 +119,9 @@ public class PublicChests {
 	}
 
 	public void registerResearches(PrivateStorage plugin) {
-	    new Research(new NamespacedKey(plugin, "wooden_chests"), 606, "Top Tier Storage", 20).addItems(chestOak, chestBirch, chestSpruce, chestJungle, chestAcacia, chestDarkOak).register();
-		new Research(new NamespacedKey(plugin, "metal_chests"), 608, "Improved Storage", 16).addItems(chestIron, chestGold, chestDiamond, chestEmerald).register();
-		new Research(new NamespacedKey(plugin, "hardened_chests"), 607, "Hardened Storage", 24).addItems(chestObsidian, chestSteel).register();
+	    new Research(new NamespacedKey(plugin, "wooden_chests"), 606, "高級儲存", 20).addItems(chestOak, chestBirch, chestSpruce, chestJungle, chestAcacia, chestDarkOak).register();
+		new Research(new NamespacedKey(plugin, "metal_chests"), 608, "更加好的儲存", 16).addItems(chestIron, chestGold, chestDiamond, chestEmerald).register();
+		new Research(new NamespacedKey(plugin, "hardened_chests"), 607, "硬化儲存", 24).addItems(chestObsidian, chestSteel).register();
 	}
 
 }
