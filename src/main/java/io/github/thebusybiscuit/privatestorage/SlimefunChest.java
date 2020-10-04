@@ -3,12 +3,13 @@ package io.github.thebusybiscuit.privatestorage;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunBlockHandler;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.UnregisterReason;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -64,40 +65,37 @@ public class SlimefunChest extends SlimefunItem {
             }
         };
         
-        SlimefunItem.registerBlockHandler(getID(), new SlimefunBlockHandler() {
-            
+        addItemHandler(new BlockPlaceHandler(false) {
+
             @Override
-            public void onPlace(Player p, Block b, SlimefunItem item) {
-                BlockStorage.addBlockInfo(b, "owner", p.getUniqueId().toString());
+            public void onPlayerPlace(BlockPlaceEvent e) {
+                BlockStorage.addBlockInfo(e.getBlock(), "owner", e.getPlayer().getUniqueId().toString());
             }
-            
-            @Override
-            public boolean onBreak(Player p, Block b, SlimefunItem item, UnregisterReason reason) {
-                boolean allow = true;
-                
-                if (reason.equals(UnregisterReason.PLAYER_BREAK)) {
-                    if (p.hasPermission("PrivateStorage.bypass")) { 
-                        allow = true;
-                    else {
-                        allow = BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
-                    }
-                }
-                else if (reason.equals(UnregisterReason.EXPLODE)) {
-                    allow = canExplode;
-                }
-                
-                if (allow) {
-                    BlockMenu inv = BlockStorage.getInventory(b);
+
+        });
+        
+        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+        
+            if (reason == UnregisterReason.EXPLODE && !canExplode) {
+                return false;
+            }
+        
+            if (reason == UnregisterReason.PLAYER_BREAK && 
+                    !p.hasPermission("PrivateStorage.bypass") && 
+                    !BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString())) {
                     
-                    for (int slot = 0; slot < size; slot++) {
-                        if (inv.getItemInSlot(slot) != null) {
-                            b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
-                        }
-                    }
-                }
-                
-                return allow;
+                return false;
             }
+            
+            BlockMenu inv = BlockStorage.getInventory(b);
+
+            for (int slot = 0; slot < size; slot++) {
+                if (inv.getItemInSlot(slot) != null) {
+                    b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
+                }
+            }
+
+            return true;
         });
     }
 
