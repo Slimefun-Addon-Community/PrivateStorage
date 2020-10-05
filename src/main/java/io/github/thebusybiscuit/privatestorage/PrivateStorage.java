@@ -15,34 +15,34 @@ import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.Updater;
 
 public class PrivateStorage extends JavaPlugin implements SlimefunAddon {
-	
-	@Override
-	public void onEnable() {
-		Config cfg = new Config(this);
+    
+    @Override
+    public void onEnable() {
+        Config cfg = new Config(this);
 
-		// Setting up bStats
-		new Metrics(this, 4912);
+        // Setting up bStats
+        new Metrics(this, 4912);
 
-		if (getDescription().getVersion().startsWith("DEV - ")) {
-			Updater updater = new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/PrivateStorage/master");
-			
-			// Only run the Updater if it has not been disabled
-			if (cfg.getBoolean("options.auto-update")) updater.start();
-		}
-		
-		Category category = new Category(new NamespacedKey(this, "private_storage"), new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZThlNTU0NGFmN2Y1NDg5Y2MyNzQ5MWNhNjhmYTkyMzg0YjhlYTVjZjIwYjVjODE5OGFkYjdiZmQxMmJjMmJjMiJ9fX0="), "&7Private Storage - Chests and Safes", "", "&a> Click to open"));
-		
-		new PublicChests(this, category);
-		new PrivateChests(this, category);
-	}
+        if (getDescription().getVersion().startsWith("DEV - ")) {
+            Updater updater = new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/PrivateStorage/master");
+            
+            // Only run the Updater if it has not been disabled
+            if (cfg.getBoolean("options.auto-update")) updater.start();
+        }
+        
+        Category category = new Category(new NamespacedKey(this, "private_storage"), new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZThlNTU0NGFmN2Y1NDg5Y2MyNzQ5MWNhNjhmYTkyMzg0YjhlYTVjZjIwYjVjODE5OGFkYjdiZmQxMmJjMmJjMiJ9fX0="), "&7Private Storage - Chests and Safes", "", "&a> Click to open"));
+        
+        new PublicChests(this, category);
+        new PrivateChests(this, category);
+    }
 
-	@Override
-	public JavaPlugin getJavaPlugin() {
-		return this;
-	}
+    @Override
+    public JavaPlugin getJavaPlugin() {
+        return this;
+    }
 
-	@Override
-	public String getBugTrackerURL() {
-		return "https://github.com/TheBusyBiscuit/PrivateStorage/issues";
-	}
+    @Override
+    public String getBugTrackerURL() {
+        return "https://github.com/TheBusyBiscuit/PrivateStorage/issues";
+    }
 }
