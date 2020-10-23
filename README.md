@@ -5,7 +5,8 @@
 兩種不同類型的箱子: 私人與公開.<br>
 私人箱子只能由放置它們的玩家打開和破壞,而公開箱子可以使用您的保護插件.
 
-[官方原碼連結](https://github.com/TheBusyBiscuit/PrivateStorage)
+此為**非官方**版本, 請勿在該作者的問題追蹤內回報!
+[原作者連結](https://github.com/TheBusyBiscuit/PrivateStorage)
 
 ## 下載私人倉庫
 繁體翻譯版: [構建頁面](https://xmikux.github.io/builds/xMikux/PrivateStorage/master)<br>
