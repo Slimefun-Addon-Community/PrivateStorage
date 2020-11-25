@@ -25,7 +25,6 @@ public class PrivateStorage extends JavaPlugin implements SlimefunAddon {
 
         if (getDescription().getVersion().startsWith("DEV - ")) {
             Updater updater = new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/PrivateStorage/master");
-
             // Only run the Updater if it has not been disabled
             if (cfg.getBoolean("options.auto-update")) {
                 updater.start();
