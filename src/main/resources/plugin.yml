@@ -1,11 +1,13 @@
 name: PrivateStorage
 version: ${project.version}
 author: TheBusyBiscuit
+website: https://github.com/TheBusyBiscuit/PrivateStorage
 
-main: io.github.thebusybiscuit.privatestorage.PrivateStorage
 api-version: 1.14
+main: io.github.thebusybiscuit.privatestorage.PrivateStorage
 
-depend: [Slimefun]
+depend:
+- Slimefun
 
 permissions:
   PrivateStorage.bypass:
