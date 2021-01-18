@@ -7,9 +7,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.github.thebusybiscuit.privatestorage.storage.PrivateChests;
 import io.github.thebusybiscuit.privatestorage.storage.PublicChests;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.Item.CustomItem;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 //import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
+import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 
 public class PrivateStorage extends JavaPlugin implements SlimefunAddon {

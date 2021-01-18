@@ -2,10 +2,13 @@ name: PrivateStorage
 version: ${project.version}
 author: TheBusyBiscuit
 description: 黏液科技附加 私人倉庫 繁體翻譯版.
-main: io.github.thebusybiscuit.privatestorage.PrivateStorage
-api-version: 1.14
+website: https://github.com/TheBusyBiscuit/PrivateStorage
 
-depend: [Slimefun]
+api-version: 1.14
+main: io.github.thebusybiscuit.privatestorage.PrivateStorage
+
+depend:
+- Slimefun
 
 permissions:
   PrivateStorage.bypass:
