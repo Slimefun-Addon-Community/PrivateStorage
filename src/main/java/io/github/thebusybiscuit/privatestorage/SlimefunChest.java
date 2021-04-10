@@ -1,17 +1,21 @@
 package io.github.thebusybiscuit.privatestorage;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.UnregisterReason;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -42,10 +46,10 @@ public class SlimefunChest extends SlimefunItem {
                 }
 
                 switch (level) {
-                case PRIVATE:
-                    return BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
-                default:
-                    return SlimefunPlugin.getProtectionManager().hasPermission(p, b, ProtectableAction.INTERACT_BLOCK);
+                    case PRIVATE:
+                        return BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
+                    default:
+                        return SlimefunPlugin.getProtectionManager().hasPermission(p, b, ProtectableAction.INTERACT_BLOCK);
                 }
             }
 
@@ -59,38 +63,61 @@ public class SlimefunChest extends SlimefunItem {
             }
         };
 
-        addItemHandler(new BlockPlaceHandler(false) {
+        addItemHandler(onBlockPlace(), onBlockBreak(size, canExplode));
+    }
+
+    private BlockPlaceHandler onBlockPlace() {
+        return new BlockPlaceHandler(false) {
 
             @Override
             public void onPlayerPlace(BlockPlaceEvent e) {
                 BlockStorage.addBlockInfo(e.getBlock().getLocation(), "owner", e.getPlayer().getUniqueId().toString());
             }
 
-        });
+        };
+    }
 
-        SlimefunItem.registerBlockHandler(getId(), (p, b, tool, reason) -> {
-            boolean allow = true;
+    private BlockBreakHandler onBlockBreak(int size, boolean canExplode) {
+        return new BlockBreakHandler(false, canExplode) {
 
-            if (reason.equals(UnregisterReason.PLAYER_BREAK)) {
+            @Override
+            public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
+                boolean allow = true;
+                Player p = e.getPlayer();
+                Block b = e.getBlock();
+
                 if (!p.hasPermission("PrivateStorage.bypass")) {
-                    allow = BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString());
+                    allow = Objects.equals(BlockStorage.getLocationInfo(b.getLocation(), "owner"), p.getUniqueId().toString());
                 }
-            } else if (reason.equals(UnregisterReason.EXPLODE)) {
-                allow = canExplode;
+
+                if (allow) {
+                    BlockMenu inv = BlockStorage.getInventory(b);
+
+                    for (int slot = 0; slot < size; slot++) {
+                        ItemStack stack = inv.getItemInSlot(slot);
+
+                        if (stack != null && !stack.getType().isAir()) {
+                            b.getWorld().dropItemNaturally(b.getLocation(), stack);
+                        }
+                    }
+                } else {
+                    e.setCancelled(true);
+                }
             }
 
-            if (allow) {
+            @Override
+            public void onExplode(Block b, List<ItemStack> drops) {
                 BlockMenu inv = BlockStorage.getInventory(b);
 
                 for (int slot = 0; slot < size; slot++) {
-                    if (inv.getItemInSlot(slot) != null) {
-                        b.getWorld().dropItemNaturally(b.getLocation(), inv.getItemInSlot(slot));
+                    ItemStack stack = inv.getItemInSlot(slot);
+
+                    if (stack != null && !stack.getType().isAir()) {
+                        drops.add(stack);
                     }
                 }
             }
-
-            return allow;
-        });
+        };
     }
 
     private int[] getSlotsArray(int size) {
