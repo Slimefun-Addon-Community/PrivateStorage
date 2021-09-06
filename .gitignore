@@ -6,8 +6,3 @@
 /target/
 /.idea/
 dependency-reduced-pom.xml
-
-.classpath
-.project
-*.iml
-.DS_Store
