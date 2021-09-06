@@ -1,10 +1,10 @@
+.classpath
+.project
+.iml
+/.settings/
 /bin/
 /target/
-/plugins/
-/sonar/
-/.settings/
 /.idea/
-
 dependency-reduced-pom.xml
 
 .classpath
